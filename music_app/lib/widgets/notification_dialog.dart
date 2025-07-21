@@ -1,0 +1,12 @@
+import 'package:flutter/material.dart';
+
+class NotificationDialog {
+  static void showMessage(BuildContext context, String message, {Color color = Colors.black}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: color,
+      ),
+    );
+  }
+}

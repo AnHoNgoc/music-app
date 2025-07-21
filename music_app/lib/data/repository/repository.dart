@@ -1,0 +1,34 @@
+import 'package:music_app/data/source/source.dart';
+
+import '../model/song.dart';
+
+abstract interface class Repository {
+  Future<List<Song>?> loadData();
+}
+
+class DefaultRepository implements Repository {
+
+  final _localDataSource = LocalDataSource();
+  final _remoteDataSource = RemoteDataSource();
+
+  @override
+  Future<List<Song>?> loadData() async {
+    try {
+      List<Song> songs = [];
+      List<Song>? remoteSongs = await _remoteDataSource.loadData();
+      if (remoteSongs != null) {
+        songs.addAll(remoteSongs);
+      } else {
+        List<Song>? localSongs = await _localDataSource.loadData();
+        if (localSongs != null) {
+          songs.addAll(localSongs);
+        }
+      }
+      return songs;
+    } catch (e, stacktrace) {
+      print('Error loading songs: $e');
+      print(stacktrace);
+      return null;
+    }
+  }
+}
