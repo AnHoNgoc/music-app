@@ -24,7 +24,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.music_app"
-        minSdkVersion 23  // Thay đổi ở đây
+        minSdkVersion flutter.minSdkVersion  // Thay đổi ở đây
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
