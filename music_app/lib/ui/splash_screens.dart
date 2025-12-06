@@ -43,11 +43,14 @@ class _SplashScreenState extends State<SplashScreen> {
           scale: _scale,
           duration: _animationDuration,
           curve: Curves.easeInOut,
-          child: Image.asset(
-            'assets/splash_music.png',
-            width: 200.w,
-            height: 200.h,
-            fit: BoxFit.cover,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20), // bo tròn góc
+            child: Image.asset(
+              'assets/splash_music.png',
+              width: 200.w,
+              height: 200.h,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
       ),

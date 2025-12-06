@@ -4,7 +4,7 @@ export default function Home() {
 
             {/* Title */}
             <h1 className="text-4xl md:text-5xl font-bold text-purple-900 mb-4 text-center">
-                Music Streamer App
+                Music App
             </h1>
 
             {/* Description */}
@@ -19,8 +19,9 @@ export default function Home() {
                 {/* Feature 1 */}
                 <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
                     <h3 className="text-xl font-semibold mb-2">Unlimited Streaming</h3>
-                    <p>Listen to millions of songs without limits anytime you want.</p>
+                    <p>Listen to all available songs from our collection anytime you want.</p>
                 </div>
+
 
                 {/* Feature 2 */}
                 <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
@@ -34,10 +35,9 @@ export default function Home() {
                     <p>Explore new music and trending artists based on your taste.</p>
                 </div>
 
-                {/* Feature 4 */}
                 <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
-                    <h3 className="text-xl font-semibold mb-2">Offline Mode</h3>
-                    <p>Download songs and enjoy your music even without internet.</p>
+                    <h3 className="text-xl font-semibold mb-2">Stream Anytime</h3>
+                    <p>Enjoy your favorite music online anytime, anywhere with a stable internet connection.</p>
                 </div>
 
                 {/* Feature 5 */}

@@ -68,7 +68,7 @@ class AccountTab extends StatelessWidget {
 
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (_) => const LoginView()),
+        MaterialPageRoute(builder: (_) => const MusicApp()),
             (_) => false,
       );
     } else {

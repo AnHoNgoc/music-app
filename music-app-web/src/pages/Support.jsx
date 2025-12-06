@@ -5,14 +5,14 @@ const Support = () => {
 
                 {/* Title */}
                 <h1 className="text-4xl font-bold text-purple-900 mb-8 text-center">
-                    Music Streamer App Support
+                    Music App Support
                 </h1>
 
                 {/* Introduction */}
                 <section className="mb-6">
                     <p className="text-purple-800 leading-relaxed">
                         Welcome to the Music Streamer App Support page. Here you can find help
-                        on discovering music, managing playlists, and enjoying your favorite tracks seamlessly.
+                        on discovering music, managing playlists, and enjoying your favorite tracks online.
                     </p>
                 </section>
 
@@ -40,15 +40,14 @@ const Support = () => {
                     </ul>
                 </section>
 
-                {/* Offline Mode & Streaming */}
+                {/* Streaming */}
                 <section className="mb-6">
                     <h2 className="text-2xl font-semibold text-purple-900 mb-3">
-                        3. Offline Mode & Streaming
+                        3. Streaming
                     </h2>
                     <ul className="list-disc list-inside text-purple-800 space-y-1">
                         <li>Stream music online with high-quality audio.</li>
-                        <li>Download songs or playlists to listen offline.</li>
-                        <li>Enjoy uninterrupted playback on multiple devices.</li>
+                        <li>Enjoy uninterrupted playback on multiple devices while connected to the internet.</li>
                     </ul>
                 </section>
 
@@ -66,7 +65,7 @@ const Support = () => {
 
                         <div>
                             <p><strong>Q: Can I listen offline?</strong></p>
-                            <p>A: Yes, download songs or playlists to your device for offline listening.</p>
+                            <p>A: No, all music streaming requires an active internet connection.</p>
                         </div>
 
                         <div>
