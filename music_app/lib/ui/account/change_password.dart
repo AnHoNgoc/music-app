@@ -35,34 +35,53 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
   }
 
   Future<void> _submitForm() async {
-    if (_formKey.currentState!.validate()) {
-      setState(() {
-        _isLoading = true;
-      });
+    if (!_formKey.currentState!.validate()) return;
 
-      final result = await AuthService().changePassword(
+    setState(() {
+      _isLoading = true;
+    });
+
+    String? result;
+
+    try {
+      result = await AuthService().changePassword(
         oldPassword: _oldPasswordController.text.trim(),
         newPassword: _newPasswordController.text.trim(),
       );
+    } catch (e) {
+      result = "Something went wrong. Please try again.";
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    }
 
-      if (!mounted) return;
+    if (!mounted) return;
 
-      setState(() {
-        _isLoading = false;
-      });
-
-      if (result) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+    if (result == null) {
+      // success
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
           content: Text("Password changed successfully!"),
           backgroundColor: Colors.green,
-        ));
+        ),
+      );
 
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => const MusicHomePage()),
-              (route) => false,
-        );
-      }
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (_) => const MusicHomePage()),
+            (route) => false,
+      );
+    } else {
+      // error
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(result),
+          backgroundColor: Colors.red,
+        ),
+      );
     }
   }
 

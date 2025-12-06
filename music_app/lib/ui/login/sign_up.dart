@@ -40,52 +40,49 @@ class _SignUpViewState extends State<SignUpView> {
 
     setState(() => _isLoader = true);
 
-    var data = {
+    final data = {
       "username": _userNameController.text,
       "email": _emailController.text,
       "password": _passwordController.text,
     };
 
+    String? errorMessage;
+
     try {
-      String? errorMessage = await _authService.createUser(data);
-
-      if (!mounted) return; // 🔑 Kiểm tra mounted ngay sau await.
-
-      if (errorMessage == null) {
-        _userNameController.clear();
-        _emailController.clear();
-        _confirmPasswordController.clear();
-        _passwordController.clear();
-
-        NotificationDialog.showMessage(
-          context,
-          'User created successfully!',
-          color: Colors.green,
-        );
-
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => const LoginView()),
-              (Route<dynamic> route) => false,
-        );
-      } else {
-        NotificationDialog.showMessage(
-          context,
-          errorMessage,
-          color: Colors.red,
-        );
-      }
+      errorMessage = await _authService.createUser(data);
     } catch (e) {
-      if (!mounted) return;
-      NotificationDialog.showMessage(
+      errorMessage = "Error: $e";
+    } finally {
+      if (mounted) setState(() => _isLoader = false);
+    }
+
+    if (!mounted) return;
+
+    // ✔️ UI xử lý sau try/catch — rõ ràng, sạch sẽ
+    if (errorMessage == null) {
+      // Clear fields
+      _userNameController.clear();
+      _emailController.clear();
+      _confirmPasswordController.clear();
+      _passwordController.clear();
+
+      showMessage(
         context,
-        'Error: $e',
+        'User created successfully!',
+        color: Colors.green,
+      );
+
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (_) => const LoginView()),
+            (_) => false,
+      );
+    } else {
+      showMessage(
+        context,
+        errorMessage,
         color: Colors.red,
       );
-    } finally {
-      if (mounted) {
-        setState(() => _isLoader = false);
-      }
     }
   }
 

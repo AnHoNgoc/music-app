@@ -5,14 +5,9 @@ import '../../service/playlist_service.dart';
 import '../../widgets/confirm_bottom_sheet.dart';
 import '../now_playing/now_playing.dart';
 
-class FavoritesTab extends StatefulWidget {
-  const FavoritesTab({super.key});
+class FavoritesTab extends StatelessWidget {
+  FavoritesTab({super.key});
 
-  @override
-  State<FavoritesTab> createState() => _FavoritesTabState();
-}
-
-class _FavoritesTabState extends State<FavoritesTab> {
   final PlaylistService _playlistService = PlaylistService();
 
   @override
@@ -53,7 +48,7 @@ class _FavoritesTabState extends State<FavoritesTab> {
 
 class SongItemSection extends StatelessWidget {
   final Song song;
-  final BuildContext scaffoldContext; // Context từ Scaffold cha
+  final BuildContext scaffoldContext;
   final List<Song> songs;
 
   const SongItemSection({

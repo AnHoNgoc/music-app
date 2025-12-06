@@ -32,43 +32,41 @@ class _LoginViewState extends State<LoginView> {
   }
 
   Future<void> _submitForm() async {
-    if (_formKey.currentState!.validate()) {
+    if (!_formKey.currentState!.validate()) return;
+
+    if (mounted) {
+      setState(() {
+        _isLoader = true;
+      });
+    }
+
+    String? errorMessage;
+
+    try {
+      errorMessage = await _authService.loginUser({
+        "email": _emailController.text.trim(),
+        "password": _passwordController.text.trim(),
+      });
+    } catch (e) {
+      errorMessage = "Error: $e";
+    } finally {
       if (mounted) {
-        setState(() {
-          _isLoader = true;
-        });
+        setState(() => _isLoader = false);
       }
+    }
 
-      try {
-        bool isSuccess = await _authService.loginUser(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim(),
-        );
+    // 🚀 Xử lý UI sau try/catch
+    if (!mounted) return;
 
-        if (isSuccess) {
-          if (mounted) {
-            await Future.delayed(const Duration(milliseconds: 500));
-            if (!mounted) return;
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const MusicHomePage()),
-            );
-          }
-        } else {
-          if (mounted) {
-            NotificationDialog.showMessage(context, 'Invalid email or password.', color: Colors.red);
-          }
-        }
-      } catch (e) {
-        if (mounted) {
-          NotificationDialog.showMessage(context, 'Error: $e', color: Colors.red);
-        }
-      } finally {
-        if (mounted) {
-          setState(() {
-            _isLoader = false;
-          });
-        }
-      }
+    if (errorMessage == null) {
+      await Future.delayed(const Duration(milliseconds: 500));
+      if (!mounted) return;
+
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) => const MusicHomePage()),
+      );
+    } else {
+      showMessage(context, errorMessage, color: Colors.red);
     }
   }
 

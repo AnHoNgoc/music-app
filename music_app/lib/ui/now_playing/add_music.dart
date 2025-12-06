@@ -39,14 +39,14 @@ class _AddMusicState extends State<AddMusic> {
         } else {
           await service.addSongToPlaylist(widget.currentSong);
           if (!mounted) return;
-          NotificationDialog.showMessage(context, 'Song added to playlist successfully!', color: Colors.green);
+          showMessage(context, 'Song added to playlist successfully!', color: Colors.green);
           await Future.delayed(const Duration(milliseconds: 500));
           if (!mounted) return;
           Navigator.pop(context);
         }
       } catch (e) {
         if (!mounted) return;
-        NotificationDialog.showMessage(context, 'Something went wrong: $e', color: Colors.red);
+        showMessage(context, 'Something went wrong: $e', color: Colors.red);
       } finally {
         if (mounted) {
           setState(() {

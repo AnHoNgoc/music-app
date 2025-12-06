@@ -34,10 +34,10 @@ class MusicHomePage extends StatefulWidget {
 
 class _MusicHomePageState extends State<MusicHomePage> {
   final List<Widget> _tabs = [
-    const HomeTab(),
-    const DiscoveryTab(),
-    const FavoritesTab(),
-    const AccountTab(),
+    HomeTab(),
+    DiscoveryTab(),
+    FavoritesTab(),
+    AccountTab(),
   ];
 
   int _currentIndex = 0;

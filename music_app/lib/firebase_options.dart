@@ -59,10 +59,10 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCLKcTq0Pi7gDJDyjIrVCcuj6Uyu7l6vP0',
-    appId: '1:471259054512:ios:6ee9ab0a60103aa5a8d675',
+    appId: '1:471259054512:ios:ece47fe06fd9163fa8d675',
     messagingSenderId: '471259054512',
     projectId: 'musicapp-df805',
     storageBucket: 'musicapp-df805.appspot.com',
-    iosBundleId: 'com.example.musicApp',
+    iosBundleId: 'com.ngocanho.musicapp',
   );
 }

@@ -5,7 +5,11 @@ import 'package:music_app/ui/account/user_provider.dart';
 import 'package:music_app/ui/account/change_password.dart';
 import 'package:provider/provider.dart';
 
+import '../../service/auth_service.dart';
+import '../../widgets/confirm_dialog.dart';
 import '../../widgets/logout_dialog.dart';
+import '../../widgets/notification_dialog.dart';
+import '../../widgets/password_dialog.dart';
 import '../login/login.dart';
 import '../main_screens.dart';
 
@@ -15,7 +19,7 @@ class AccountTab extends StatelessWidget {
   Future<void> logOut(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
 
-    if (!context.mounted) return; // 🔑 đảm bảo an toàn
+    if (!context.mounted) return;
 
     Navigator.pushAndRemoveUntil(
       context,
@@ -29,6 +33,51 @@ class AccountTab extends StatelessWidget {
       context,
       MaterialPageRoute(builder: (context) => const ChangePasswordView()),
     );
+  }
+
+  Future<void> onDeleteAccountPressed(BuildContext context) async {
+    final bool confirmed = await ConfirmDialog.show(
+      context,
+      title: 'Delete Account',
+      content: 'Are you sure you want to delete your account? This action cannot be undone.',
+      cancelText: 'Cancel',
+      confirmText: 'Delete',
+    );
+
+    if (!context.mounted || !confirmed) return;
+
+    final String? password = await PasswordDialog.show(context);
+
+    if (!context.mounted || password == null || password.isEmpty) return;
+
+    bool success = false;
+    try {
+      success = await AuthService().deleteUser(password: password);
+    } catch (e) {
+      success = false;
+    }
+
+    if (!context.mounted) return;
+
+    if (success) {
+      showMessage(
+        context,
+        'Account deleted successfully!',
+        color: Colors.green,
+      );
+
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (_) => const LoginView()),
+            (_) => false,
+      );
+    } else {
+      showMessage(
+        context,
+        'Error deleting account',
+        color: Colors.redAccent,
+      );
+    }
   }
 
   @override
@@ -102,13 +151,22 @@ class AccountTab extends StatelessWidget {
                   ),
                   Divider(height: 20.h),
                   ListTile(
+                    leading: const Icon(Icons.lock_outline),
+                    title: Text(
+                      'Delete Account',
+                      style: TextStyle(fontSize: 14.sp),
+                    ),
+                    onTap: () => onDeleteAccountPressed(context),
+                  ),
+                  Divider(height: 20.h),
+                  ListTile(
                     leading: const Icon(Icons.logout),
                     title: Text(
                       'Logout',
                       style: TextStyle(fontSize: 14.sp),
                     ),
                     onTap: () async {
-                      final confirm = await LogoutDialog.showLogoutConfirmationDialog(context);
+                      final confirm = await showLogoutConfirmationDialog(context);
 
                       if (!context.mounted) return;
 

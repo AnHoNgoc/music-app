@@ -38,42 +38,84 @@ class AuthService {
     }
   }
 
-  Future<bool> loginUser({
-    required String email,
-    required String password,
-  }) async {
+  Future<String?> loginUser(Map<String, dynamic> data) async {
     try {
       await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
+        email: data["email"],
+        password: data["password"],
       );
-      return true;
-    } catch (e) {
-      return false;
+      return null;
+    } on FirebaseAuthException catch (_) {
+      return 'Invalid email or password.';
+    } catch (_) {
+      return 'An error occurred. Please try again.';
     }
   }
 
 
-  Future<bool> changePassword({
+  Future<String?> changePassword({
     required String oldPassword,
     required String newPassword,
   }) async {
     try {
-      final user = _auth.currentUser;
-      final email = user?.email;
+      final user = FirebaseAuth.instance.currentUser;
+      if (user == null) return "User not found.";
+      final email = user.email;
+      if (email == null) return "Email not available for this account.";
 
-      if (user != null && email != null) {
-        final credential = EmailAuthProvider.credential(
-          email: email,
-          password: oldPassword,
-        );
-        await user.reauthenticateWithCredential(credential);
-        await user.updatePassword(newPassword);
-        return true;
-      } else {
-        return false;
+      // Re-auth với mật khẩu cũ
+      final cred = EmailAuthProvider.credential(
+        email: email,
+        password: oldPassword,
+      );
+      await user.reauthenticateWithCredential(cred);
+
+      // Đổi mật khẩu
+      await user.updatePassword(newPassword);
+      return null;
+    } on FirebaseAuthException catch (e) {
+      switch (e.code) {
+        case 'wrong-password':
+        case 'invalid-credential':
+          return "Old password is incorrect.";
+        case 'weak-password':
+          return "New password is too weak.";
+        case 'requires-recent-login':
+          return "Please log in again and try changing the password.";
+        case 'user-not-found':
+        case 'user-mismatch':
+          return "User not found or mismatched.";
+        case 'too-many-requests':
+          return "Too many attempts. Please try again later.";
+        default:
+          return "Password change failed. Please try again.";
       }
     } catch (e) {
+      // debugPrint('changePassword unknown error: $e');
+      return "An error occurred. Please try again.";
+    }
+  }
+
+  Future<bool> deleteUser({String? password}) async {
+    User? user = _auth.currentUser;
+    if (user == null) return false;
+
+    try {
+      await _fireStore.collection('users').doc(user.uid).delete();
+      await user.delete();
+      return true;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'requires-recent-login') {
+        if (password == null || user.email == null) return false;
+
+        AuthCredential credential =
+        EmailAuthProvider.credential(email: user.email!, password: password);
+        await user.reauthenticateWithCredential(credential);
+
+        await _fireStore.collection('users').doc(user.uid).delete();
+        await user.delete();
+        return true;
+      }
       return false;
     }
   }

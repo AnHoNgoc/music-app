@@ -14,7 +14,7 @@ class UserProvider with ChangeNotifier {
   List<Map<String, dynamic>> get playlists => _playlists;
 
   Future<void> checkUserLoggedIn() async {
-    _currentUser = await _authService.checkUserLoggedIn();
+    _currentUser = _authService.checkUserLoggedIn();
     _userId = _currentUser?.uid;
     notifyListeners();
   }
