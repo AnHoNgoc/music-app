@@ -31,9 +31,19 @@ export default function PrivacyPolicy() {
                     </ul>
                 </section>
 
+                {/* Camera Usage */}
+                <section className="mb-6">
+                    <h2 className="text-2xl font-semibold text-blue-900 mb-3">2. Camera Usage</h2>
+                    <p className="text-blue-800 leading-relaxed">
+                        Our app may request access to your device's camera, but only for the purpose of scanning QR codes related to
+                        your receipts or products. This is used solely to update your financial information in the app.
+                        We do not use the camera for any other purpose, and no images or videos are stored or shared.
+                    </p>
+                </section>
+
                 {/* Use of Data */}
                 <section className="mb-6">
-                    <h2 className="text-2xl font-semibold text-blue-900 mb-3">2. How We Use Your Data</h2>
+                    <h2 className="text-2xl font-semibold text-blue-900 mb-3">3. How We Use Your Data</h2>
                     <ul className="list-disc list-inside text-blue-800 space-y-1">
                         <li>Manage and display your finances accurately</li>
                         <li>Create charts and financial summaries</li>
@@ -45,7 +55,7 @@ export default function PrivacyPolicy() {
 
                 {/* Third-Party Services */}
                 <section className="mb-6">
-                    <h2 className="text-2xl font-semibold text-blue-900 mb-3">3. Third-Party Services</h2>
+                    <h2 className="text-2xl font-semibold text-blue-900 mb-3">4. Third-Party Services</h2>
                     <p className="text-blue-800 leading-relaxed">
                         We may use trusted third-party services for:
                     </p>
@@ -62,7 +72,7 @@ export default function PrivacyPolicy() {
 
                 {/* Data Security */}
                 <section className="mb-6">
-                    <h2 className="text-2xl font-semibold text-blue-900 mb-3">4. Data Security</h2>
+                    <h2 className="text-2xl font-semibold text-blue-900 mb-3">5. Data Security</h2>
                     <p className="text-blue-800 leading-relaxed">
                         Your information is protected using secure technology. However, you are also
                         responsible for keeping your account credentials confidential.
@@ -71,7 +81,7 @@ export default function PrivacyPolicy() {
 
                 {/* User Rights */}
                 <section className="mb-6">
-                    <h2 className="text-2xl font-semibold text-blue-900 mb-3">5. Your Rights</h2>
+                    <h2 className="text-2xl font-semibold text-blue-900 mb-3">6. Your Rights</h2>
                     <ul className="list-disc list-inside text-blue-800 space-y-1">
                         <li>View, edit, or delete your data</li>
                         <li>Request full data removal</li>
@@ -82,7 +92,7 @@ export default function PrivacyPolicy() {
 
                 {/* Contact */}
                 <section>
-                    <h2 className="text-2xl font-semibold text-blue-900 mb-3">6. Contact Us</h2>
+                    <h2 className="text-2xl font-semibold text-blue-900 mb-3">7. Contact Us</h2>
                     <p className="text-blue-800 leading-relaxed">
                         For privacy-related questions, contact us at:
                         <a href="mailto:anhongoc1306@gmail.com" className="text-blue-600 underline ml-1">

@@ -5,13 +5,13 @@ const Support = () => {
 
                 {/* Title */}
                 <h1 className="text-4xl font-bold text-blue-900 mb-8 text-center">
-                    Budget Tracker App Support
+                    CashLogix App Support
                 </h1>
 
                 {/* Introduction */}
                 <section className="mb-6">
                     <p className="text-blue-800 leading-relaxed">
-                        Welcome to the Budget Tracker App Support page. Here you can find help
+                        Welcome to the CashLogix App Support page. Here you can find help
                         on managing your income, expenses, and budgets effectively.
                     </p>
                 </section>
@@ -52,10 +52,22 @@ const Support = () => {
                     </ul>
                 </section>
 
+                {/* Camera Usage */}
+                <section className="mb-6">
+                    <h2 className="text-2xl font-semibold text-blue-900 mb-3">
+                        4. Camera Usage
+                    </h2>
+                    <p className="text-blue-800 leading-relaxed">
+                        Our app may request access to your device's camera, but only for the purpose of scanning QR codes
+                        related to your receipts or products. This is used solely to update your financial information
+                        in the app. We do not use the camera for any other purpose, and no images or videos are stored or shared.
+                    </p>
+                </section>
+
                 {/* FAQ */}
                 <section className="mb-6">
                     <h2 className="text-2xl font-semibold text-blue-900 mb-3">
-                        4. Frequently Asked Questions
+                        5. Frequently Asked Questions
                     </h2>
                     <div className="text-blue-800 leading-relaxed space-y-3">
 
@@ -77,10 +89,11 @@ const Support = () => {
                     </div>
                 </section>
 
+
                 {/* Contact Support */}
                 <section>
                     <h2 className="text-2xl font-semibold text-blue-900 mb-3">
-                        5. Contact Support
+                        6. Contact Support
                     </h2>
                     <p className="text-blue-800 leading-relaxed">
                         If you need further help, contact us at:
