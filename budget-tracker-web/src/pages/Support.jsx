@@ -11,20 +11,22 @@ const Support = () => {
                 {/* Introduction */}
                 <section className="mb-6">
                     <p className="text-blue-800 leading-relaxed">
-                        Welcome to the CashLogix App Support page. Here you can find help
-                        on managing your income, expenses, and budgets effectively.
+                        Welcome to the CashLogix App Support page. CashLogix helps you track
+                        your income, expenses, and budgets easily — all stored locally on
+                        your device for full privacy and control.
                     </p>
                 </section>
 
-                {/* Account Registration & Login */}
+                {/* Local Storage Info */}
                 <section className="mb-6">
                     <h2 className="text-2xl font-semibold text-blue-900 mb-3">
-                        1. Account Registration & Login
+                        1. Data Storage & Privacy
                     </h2>
                     <ul className="list-disc list-inside text-blue-800 space-y-1">
-                        <li>Create an account using your email and password.</li>
-                        <li>Login to access your financial data from any device.</li>
-                        <li>Your data is securely synchronized with your account.</li>
+                        <li>CashLogix does not require account registration or login.</li>
+                        <li>All financial data is stored locally on your device.</li>
+                        <li>Your data is never uploaded to any server.</li>
+                        <li>Deleting the app may permanently remove your data.</li>
                     </ul>
                 </section>
 
@@ -35,8 +37,8 @@ const Support = () => {
                     </h2>
                     <ul className="list-disc list-inside text-blue-800 space-y-1">
                         <li>Add income and expense records with amount, date, and category.</li>
-                        <li>Edit or delete inaccurate entries anytime.</li>
-                        <li>Label transactions for better organization.</li>
+                        <li>Edit or delete entries at any time.</li>
+                        <li>Use categories and labels to keep transactions organized.</li>
                     </ul>
                 </section>
 
@@ -46,9 +48,9 @@ const Support = () => {
                         3. Budget & Reports
                     </h2>
                     <ul className="list-disc list-inside text-blue-800 space-y-1">
-                        <li>Set monthly budgets for each category.</li>
-                        <li>Track how much money you have left.</li>
-                        <li>Generate reports and download summaries.</li>
+                        <li>Create monthly budgets for different categories.</li>
+                        <li>Monitor spending against your set limits.</li>
+                        <li>View summaries and reports directly in the app.</li>
                     </ul>
                 </section>
 
@@ -58,9 +60,10 @@ const Support = () => {
                         4. Camera Usage
                     </h2>
                     <p className="text-blue-800 leading-relaxed">
-                        Our app may request access to your device's camera, but only for the purpose of scanning QR codes
-                        related to your receipts or products. This is used solely to update your financial information
-                        in the app. We do not use the camera for any other purpose, and no images or videos are stored or shared.
+                        CashLogix may request access to your device's camera only to scan
+                        QR codes related to receipts or products. This helps you quickly
+                        update your financial records. No images or videos are stored,
+                        saved, or shared.
                     </p>
                 </section>
 
@@ -72,23 +75,22 @@ const Support = () => {
                     <div className="text-blue-800 leading-relaxed space-y-3">
 
                         <div>
-                            <p><strong>Q: How do I add income?</strong></p>
-                            <p>A: Go to "Add Transaction" and select "Income".</p>
+                            <p><strong>Q: Do I need to create an account?</strong></p>
+                            <p>A: No. CashLogix works without accounts and stores data locally.</p>
                         </div>
 
                         <div>
-                            <p><strong>Q: Can I set a budget?</strong></p>
-                            <p>A: Yes, you can create monthly budgets in the Budget section.</p>
+                            <p><strong>Q: What happens if I change devices?</strong></p>
+                            <p>A: Your data will not transfer automatically and will stay on the original device.</p>
                         </div>
 
                         <div>
-                            <p><strong>Q: What happens if I exceed my budget?</strong></p>
-                            <p>A: The app will notify you when you approach or exceed your limit.</p>
+                            <p><strong>Q: Will I lose my data if I uninstall the app?</strong></p>
+                            <p>A: Yes. Uninstalling the app may permanently delete all stored data.</p>
                         </div>
 
                     </div>
                 </section>
-
 
                 {/* Contact Support */}
                 <section>
@@ -96,7 +98,7 @@ const Support = () => {
                         6. Contact Support
                     </h2>
                     <p className="text-blue-800 leading-relaxed">
-                        If you need further help, contact us at:
+                        If you need further assistance, please contact us at:
                         <a
                             href="mailto:anhongoc1306@gmail.com"
                             className="text-blue-600 underline ml-1"
