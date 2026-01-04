@@ -28,10 +28,10 @@ export default function Home() {
                     <p>Add, edit, and categorize your daily expenses.</p>
                 </div>
 
-                {/* Feature 3 */}
+                {/* Feature 3 - Multi-language */}
                 <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
-                    <h3 className="text-xl font-semibold mb-2">Budget Planning</h3>
-                    <p>Set monthly budgets and control your spending.</p>
+                    <h3 className="text-xl font-semibold mb-2">Multi-language Support</h3>
+                    <p>Use the app in English or Vietnamese for a seamless experience.</p>
                 </div>
 
                 {/* Feature 4 */}
