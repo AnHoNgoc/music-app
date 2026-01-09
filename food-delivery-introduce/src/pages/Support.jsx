@@ -7,7 +7,7 @@ const Support = () => {
 
                 {/* Title */}
                 <h1 className="text-4xl font-bold text-red-900 mb-8 text-center">
-                    Food Delivery App Support
+                    FoodiGoVN App App Support
                 </h1>
 
                 {/* Introduction */}
