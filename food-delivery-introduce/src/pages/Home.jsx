@@ -13,7 +13,7 @@ export default function Home() {
 
             {/* Title */}
             <h1 className="text-4xl md:text-5xl font-bold text-yellow-900 mb-4 text-center">
-                Food Delivery App
+                FoodiGoVN App
             </h1>
 
             {/* Description */}
